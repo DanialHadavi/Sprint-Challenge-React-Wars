@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StarCard from "./StarCard";
 import axios from "axios";
+import { Container, Row } from "reactstrap";
 export default function StarList(props) {
   const [stars, setStars] = useState([]);
   useEffect(() => {
@@ -15,10 +16,12 @@ export default function StarList(props) {
       });
   }, []);
   return (
-    <div className="card">
-      {stars.map(props => {
-        return <StarCard props={props} />;
-      })}
-    </div>
+    <Container>
+      <Row>
+        {stars.map((props, index) => {
+          return <StarCard props={props} key={index} />;
+        })}
+      </Row>
+    </Container>
   );
 }
